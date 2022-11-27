@@ -9,8 +9,18 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{ product }}</h1>
-        <p>{{ description }}</p>
+        <div class="nav-bar"></div>
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="image" alt="A pair of socks">
+                </div>
+                <div class="product-info">
+                    <h1>{{ product }}</h1>
+                    <p>A very nice <span><a :href="url" target="_blank" rel="noopener noreferrer">Vue</a></span> product.</p>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="./main.js"></script>
     <script>
