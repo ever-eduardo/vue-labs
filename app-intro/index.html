@@ -11,34 +11,11 @@
     <div id="app">
         <div class="nav-bar"></div>
         <div class="cart">Cart = {{ cart }}</div>
-        <div class="product-display">
-            <div class="product-container">
-                <div class="product-image">
-                    <img :class="{ 'out-of-stock-img': !inStock }" :src="image" alt="A pair of socks">
-                </div>
-                <div class="product-info">
-                    <h1>{{ title }}</h1>
-                    <p>Another nice <span><a :href="url" target="_blank" rel="noopener noreferrer">Vue</a></span> product.</p>
-                    <p v-if="inStock">In Stock</p>
-                    <p v-else>Out of Stock</p>
-                    <ul>
-                        <li v-for="detail in details">{{ detail }}</li>
-                    </ul>
-                    <div>
-                        {{ showSizes }}
-                    </div>
-                    <div class="color-circle" 
-                        :style="{backgroundColor: variant.color}" 
-                        v-for="(variant, index) in variants" 
-                        :key="variant.id" 
-                        @mouseover="updateVariant(index)"></div>
-                    <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" @:click="addToCart">Add to Cart</button>
-                    <button class="button" @:click="removeItem">Remove Item</button>
-                </div>
-            </div>
-        </div>
+        <product-display :premium="premium"></product-display>
     </div>
     <script src="./main.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
     <script>
         const mountedApp = app.mount('#app');
     </script>
