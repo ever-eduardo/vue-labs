@@ -31,6 +31,8 @@ app.component('product-display', {
             <button class="button" @:click="removeItem">Remove Item</button>
         </div>
     </div>
+    <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
 </div>`,
 data() {
     return {
@@ -43,18 +45,22 @@ data() {
             {id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
             {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0}
         ],
-        sizes: ['S', 'M', 'L', 'XL']
+        sizes: ['S', 'M', 'L', 'XL'],
+        reviews: []
     }
 },
 methods: {
     addToCart() {
-        this.cart++;
+        this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
     },
     removeItem() {
-        this.cart--;
+        this.$emit('remove-from-cart');
     },
     updateVariant(index) {
         this.selectedVariant = index;
+    },
+    addReview(review) {
+        this.reviews.push(review);
     }
 },
 computed: {
