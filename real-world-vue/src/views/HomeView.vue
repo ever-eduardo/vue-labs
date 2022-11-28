@@ -39,6 +39,7 @@ const events = [
 
 <template>
   <main>
+    <h1>Events for Good</h1>
     <div class="events">
       <EventCard
         v-for="event in events"
@@ -54,5 +55,11 @@ const events = [
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>
