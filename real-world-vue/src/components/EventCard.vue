@@ -5,10 +5,24 @@ defineProps({
     required: true,
   },
 });
+const event = {
+  id: 5928101,
+  category: "Animal Welfare",
+  title: "Cat Adoption Day",
+  description: "Find your new feline friend at this event.",
+  location: "Meow Town",
+  date: "January 28, 2022",
+  time: "12:00",
+  petsAllowed: true,
+  organizer: "Kat Laydee",
+};
 </script>
 
 <template>
-  <div class="event-card"></div>
+  <div class="event-card">
+    <span>@ {{ event.time }} on {{ event.date }}</span>
+    <h4>{{ event.title }}</h4>
+  </div>
 </template>
 
 <style scoped>
@@ -23,5 +37,10 @@ defineProps({
 .event-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+h4 {
+  text-align: center;
+  font-weight: 800;
 }
 </style>
