@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import EventList from "../views/EventList.vue";
 import EventDetails from "../views/EventDetails.vue";
+import NotFound from "../views/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       name: "EventDetails",
       component: EventDetails,
       props: true,
+    },
+    {
+      path: "/:pathMatch(.*)",
+      name: "NotFound",
+      component: NotFound,
     },
     {
       path: "/about",
