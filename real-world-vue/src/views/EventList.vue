@@ -3,9 +3,10 @@ import EventCard from "../components/EventCard.vue";
 import EventService from "../services/EventService.js";
 import { onBeforeMount, ref } from "vue";
 let events = ref([]);
+const props = defineProps(["page"]);
 
 onBeforeMount(() => {
-  EventService.getEvents()
+  EventService.getEvents(2, props.page)
     .then((response) => {
       events.value = response.data;
     })
