@@ -1,11 +1,10 @@
 <script setup>
 import EventCard from "../components/EventCard.vue";
 import EventService from "../services/EventService.js";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref, onUpdated } from "vue";
 let events = ref([]);
 const props = defineProps(["page"]);
-
-onBeforeMount(() => {
+const getData = () => {
   EventService.getEvents(2, props.page)
     .then((response) => {
       events.value = response.data;
@@ -13,7 +12,9 @@ onBeforeMount(() => {
     .catch((err) => {
       console.log(err);
     });
-});
+};
+onBeforeMount(getData);
+onUpdated(getData);
 </script>
 
 <template>
@@ -25,6 +26,17 @@ onBeforeMount(() => {
         :key="event.id"
         :event="event"
       ></EventCard>
+      <RouterLink
+        :to="{ name: 'EventList', query: { page: page - 1 } }"
+        rel="prev"
+        v-if="page != 1"
+        >Prev Page</RouterLink
+      >
+      <RouterLink
+        :to="{ name: 'EventList', query: { page: page + 1 } }"
+        rel="next"
+        >Next Page</RouterLink
+      >
     </div>
   </main>
 </template>
