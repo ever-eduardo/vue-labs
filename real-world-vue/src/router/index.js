@@ -44,13 +44,17 @@ const router = createRouter({
       component: NotFound,
     },
     {
-      path: "/about",
+      path: "/about-us",
       name: "AboutView",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/AboutView.vue"),
     },
+    {
+      path: "/about",
+      redirect: { name: "AboutView" }
+    }
   ],
 });
 
