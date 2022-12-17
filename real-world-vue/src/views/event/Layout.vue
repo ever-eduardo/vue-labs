@@ -12,9 +12,11 @@
 
 <script setup>
 import { ref, onBeforeMount } from "vue";
+import { useRouter } from "vue-router";
 import EventService from "../../services/EventService.js";
 const event = ref("");
 const props = defineProps(["id"]);
+const router = useRouter();
 
 onBeforeMount(() => {
   EventService.getEvent(props.id)
@@ -23,6 +25,14 @@ onBeforeMount(() => {
     })
     .catch((err) => {
       console.log(err);
+      if (err.response && err.response.status === 404) {
+        router.push({
+          name: "EventNotFound",
+          params: { resource: "event" }
+        });  
+      } else {
+        router.push({ name: "NetworkError" });
+      }
     });
 });
 </script>

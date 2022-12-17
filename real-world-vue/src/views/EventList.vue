@@ -2,9 +2,11 @@
 import EventCard from "../components/EventCard.vue";
 import EventService from "../services/EventService.js";
 import { onBeforeMount, ref, watchEffect, computed } from "vue";
+import { useRouter } from "vue-router";
 let events = ref([]);
 let totalEvents = ref(0);
 const props = defineProps(["page"]);
+const router = useRouter();
 const getData = () => {
   EventService.getEvents(2, props.page)
     .then((response) => {
@@ -13,6 +15,14 @@ const getData = () => {
     })
     .catch((err) => {
       console.log(err);
+      if (err.response && err.response.status === 404) {
+        router.push({
+          name: "EventNotFound",
+          params: { resource: "event" }
+        });  
+      } else {
+        router.push({ name: "NetworkError" });
+      }
     });
 };
 onBeforeMount(getData);
