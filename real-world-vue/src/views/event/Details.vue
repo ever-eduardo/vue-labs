@@ -8,7 +8,7 @@
 
 <script setup>
 import { ref, onBeforeMount } from "vue";
-import EventService from "../services/EventService.js";
+import EventService from "../../services/EventService.js";
 const event = ref("");
 const props = defineProps(["id"]);
 
