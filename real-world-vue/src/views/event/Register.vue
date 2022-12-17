@@ -2,12 +2,15 @@
   <div v-if="event" class="detail">
     <h1>{{ event.title }}</h1>
     <div class="nav">
-      <RouterLink to="{ name: 'EventDeatils', params: { id }}">Details</RouterLink>
-      <RouterLink to="{ name: 'EventRegister', params: { id }}">Register</RouterLink>
+      <RouterLink to="{ name: 'EventDeatils', params: { id }}"
+        >Details</RouterLink
+      >
+      <RouterLink to="{ name: 'EventRegister', params: { id }}"
+        >Register</RouterLink
+      >
       <RouterLink to="{ name: 'EventEdit', params: { id }}">Edit</RouterLink>
     </div>
-    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-    <p>{{ event.description }}</p>
+    <p>Register for event here.</p>
   </div>
 </template>
 
