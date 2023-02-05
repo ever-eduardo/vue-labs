@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <nav>
       <div class="nav-wrapper container center">
         <RouterLink class="hoverable" to="/">Home</RouterLink> | 
+        <RouterLink class="hoverable" to="/todo">ToDoList</RouterLink> | 
         <RouterLink class="hoverable" to="/about">About</RouterLink>
       </div>
     </nav>
